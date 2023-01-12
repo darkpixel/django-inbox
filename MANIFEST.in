@@ -1,9 +1,9 @@
 include *.rst
-include .travis.yml
+include .github/workflows/ci.yaml
 include MANIFEST
-recursive-include django_mailbox *.eml
+recursive-include inbox *.eml
 recursive-include docs *.py
 recursive-include docs *.rst
 recursive-include docs Makefile
-recursive-include django_mailbox/locale *.po
-recursive-include django_mailbox/locale *.mo
+recursive-include inbox/locale *.po
+recursive-include inbox/locale *.mo

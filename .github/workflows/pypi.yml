@@ -1,0 +1,24 @@
+name: PyPi
+on:
+  push:
+    branches:
+      - master
+      - develop
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install build deps
+        run: pip install build
+      - name: Build
+        run: python -m build
+      - name: pypi-publish
+        uses: pypa/gh-action-pypi-publish@v1.4.2
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          verbose: true

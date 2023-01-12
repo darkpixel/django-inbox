@@ -1,26 +1,18 @@
 from setuptools import find_packages, setup
 
-from django_mailbox import __version__ as version_string
+from inbox import __version__ as version_string
 
-
-tests_require = [
-    'django',
-    'mock',
-    'unittest2',
-]
 
 gmail_oauth2_require = [
     'python-social-auth',
 ]
 
 setup(
-    name='django-mailbox',
+    name='django-mailbox-fork',
     version=version_string,
-    url='http://github.com/coddingtonbear/django-mailbox/',
-    description=(
-        'Import mail from POP3, IMAP, local mailboxes or directly from '
-        'Postfix or Exim4 into your Django application automatically.'
-    ),
+    url='http://github.com/darkpixel/django-inbox/',
+    description='Import mail from POP3, IMAP, local mailboxes or directly into Django',
+    long_description='Import mail from POP3, IMAP, local mailboxes or directly into Django',
     license='MIT',
     author='Adam Coddington',
     author_email='me@adamcoddington.net',
@@ -34,18 +26,13 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Framework :: Django',
-        'Framework :: Django :: 1.11',
-        'Framework :: Django :: 2.0',
-        'Framework :: Django :: 2.1',
-        'Framework :: Django :: 2.2',
-        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 4.0',
+        'Framework :: Django :: 4.1',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Topic :: Communications :: Email',
         'Topic :: Communications :: Email :: Post-Office',
         'Topic :: Communications :: Email :: Post-Office :: IMAP',
