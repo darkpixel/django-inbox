@@ -747,7 +747,11 @@ class MessageAttachment(models.Model):
 
     def delete(self, *args, **kwargs):
         """Deletes the attachment."""
-        self.document.delete()
+        try:
+            self.document.delete()
+        except ValueError:
+            print("File not found")
+
         return super().delete(*args, **kwargs)
 
     def _get_rehydrated_headers(self):
