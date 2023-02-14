@@ -635,9 +635,12 @@ class Message(models.Model):
                     del new["Content-Transfer-Encoding"]
                     new["Content-Transfer-Encoding"] = "quoted-printable"
                 else:
-                    new.set_payload(attachment.document.read())
-                    del new["Content-Transfer-Encoding"]
-                    encode_base64(new)
+                    try:
+                        new.set_payload(attachment.document.read())
+                        del new["Content-Transfer-Encoding"]
+                        encode_base64(new)
+                    except FileNotFoundError:
+                        print("File does not exist")
             except MessageAttachment.DoesNotExist:
                 new[
                     settings["altered_message_header"]
@@ -645,10 +648,6 @@ class Message(models.Model):
                     msg[settings["attachment_interpolation_header"]]
                 )
                 new.set_payload("")
-            except FileNotFoundError:
-                print(
-                    "BUG: The attachment was not found, probably due to a bizarre interaction between s3 storages and django-inbox"
-                )
         else:
             for header, value in msg.items():
                 new[header] = value
