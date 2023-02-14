@@ -797,7 +797,7 @@ class MessageAttachment(models.Model):
         if self.document and self.document.url:
             return self.document.url
         else:
-            return None
+            return ""
 
     class Meta:
         verbose_name = _("Message attachment")
