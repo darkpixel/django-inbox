@@ -417,6 +417,7 @@ class Mailbox(models.Model):
             self.save(update_fields=["last_polling"])
         else:
             self.save()
+        connection.close()
 
     def __str__(self):
         return self.name
